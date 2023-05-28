@@ -2,9 +2,30 @@
 
 <%= render @supplier %>
 
+<h2>List of Products:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @suppliers.products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product%></td>
+        <td><%= product.quantity%></td>
+        <td><%= product.unit_price%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p></p>
 <div>
   <%= link_to "Edit this supplier", edit_supplier_path(@supplier) %> |
   <%= link_to "Back to suppliers", suppliers_path %>
-
+<p></p>
   <%= button_to "Destroy this supplier", @supplier, method: :delete %>
 </div>

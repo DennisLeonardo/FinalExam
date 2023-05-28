@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+        @item.update_attribute("item_total_amount", @item.quantity*@item.product.unit_price)
+        @item.product.update_attribute("quantity", @item.product.quantity-@item.quantity)
+        @item.order.update_attribute("total_amount", @item.item_total_amount+@item.order.total_amount)
+        @item.order.update_attribute("total_product_quantity", @item.quantity+@item.order.total_product_quantity)
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
@@ -65,6 +69,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:order_id, :product_id)
+      params.require(:item).permit(:item_total_amount, :quantity, :order_id, :product_id)
     end
 end
