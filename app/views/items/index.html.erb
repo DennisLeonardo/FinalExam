@@ -2,13 +2,32 @@
 
 <h1>Items</h1>
 
-<div id="items">
-  <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Item ID</th>
+      <th>Order Date</th>
+      <th>Customer Name</th>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Item Total Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @item.each do |item| %>
+      <tr>
+        <td><%= link_to item.id, item%></td>
+        <td><%= link_to item.order.created_at, item.order%></td>
+        <td><%= link_to item.order.customer.fullname, item.order.customer%></td>
+        <td><%= link_to item.product.name, item.product%></td>
+        <td><%= item.product.unit_price%></td>
+        <td><%= item.quantity%></td>
+        <td><%= item.item_total_amount%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p></p>
 
-<%= link_to "New item", new_item_path %>
+<%= link_to "New item", new_item_path%>

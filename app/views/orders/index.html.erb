@@ -2,13 +2,26 @@
 
 <h1>Orders</h1>
 
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Order Date</th>
+      <th>Customer Name</th>
+      <th>Total Amount</th>
+      <th>Total Product Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at, order%></td>
+        <td><%= link_to order.customer.full_name, order.customer%></td>
+        <td><%= order.total_amount%></td>
+        <td><%= order.total_product_quantity%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p></p>
 
 <%= link_to "New order", new_order_path %>

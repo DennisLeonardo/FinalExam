@@ -1,4 +1,5 @@
 <div id="<%= dom_id customer %>">
+<%# Displays the customer's details %>
   <p>
     <strong>First name:</strong>
     <%= customer.first_name %>
@@ -9,9 +10,15 @@
     <%= customer.last_name %>
   </p>
 
+<%# Displays the customer's email address %>
   <p>
     <strong>Email address:</strong>
     <%= customer.email_address %>
   </p>
 
+<p>
+    <strong>Avatar:</strong>
+    <p>
+    <%= image_tag customer.avatar %>
+</p>
 </div>

@@ -2,6 +2,29 @@
 
 <%= render @order %>
 
+<h2>List of Products Ordered: </h2>
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+      <th>Quantity Ordered</th>
+      <th>Item Total Amount</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.items.each do |item| %>
+      <tr>
+        <td><%= link_to item.product.name, item.product%></td>
+        <td><%= item.product.unit_price%></td>
+        <td><%= item.quantity%></td>
+        <td><%= item.item_total_amount%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div>
   <%= link_to "Edit this order", edit_order_path(@order) %> |
   <%= link_to "Back to orders", orders_path %>

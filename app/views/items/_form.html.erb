@@ -12,13 +12,18 @@
   <% end %>
 
   <div>
-    <%= form.label :order_id, style: "display: block" %>
-    <%= form.text_field :order_id %>
+    <%= form.label :quantity, style: "display: block" %>
+    <%= form.number_field :quantity %>
   </div>
 
   <div>
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.text_field :product_id %>
+    <%= form.label :order_date, style: "display: block" %>
+    <%= collection_select(:item, :order_id, Order.all, :id, :created_at) %>
+  </div>
+
+  <div>
+    <%= form.label :product_name, style: "display: block" %>
+    <%= collection_select(:item, :product_id, Product.all, :id, :name) %>
   </div>
 
   <div>

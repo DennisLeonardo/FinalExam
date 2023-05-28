@@ -2,9 +2,30 @@
 
 <%= render @customer %>
 
+<h2>List of Orders:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order Date</th>
+      <th>Total Order Amount</th>
+      <th>Total Product Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customer.orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at, order%></td>
+        <td><%= order.total_amount%></td>
+        <td><%= order.total_product_quantity%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p></p>
 <div>
   <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to customers", customers_path %>
-
+<p></p>
   <%= button_to "Destroy this customer", @customer, method: :delete %>
 </div>
