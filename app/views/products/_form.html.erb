@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :supplier_id, style: "display: block" %>
-    <%= form.text_field :supplier_id %>
+    <%= form.label :supplier_name, style: "display: block" %>
+    <%= collection_select(:product, :supplier_id, Supplier.all, :id, :name) %>
   </div>
 
   <div>

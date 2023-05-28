@@ -11,19 +11,10 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :total_amount, style: "display: block" %>
-    <%= form.text_field :total_amount %>
-  </div>
 
   <div>
-    <%= form.label :total_product_quantity, style: "display: block" %>
-    <%= form.number_field :total_product_quantity %>
-  </div>
-
-  <div>
-    <%= form.label :customer_id, style: "display: block" %>
-    <%= form.text_field :customer_id %>
+    <%= form.label :customer_name, style: "display: block" %>
+    <%= collection_select(:order, :customer_id, Customer.all, :id, :full_name) %>
   </div>
 
   <div>

@@ -2,13 +2,26 @@
 
 <h1>Products</h1>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Supplier's Name</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product%></td>
+        <td><%= product.quantity%></td>
+        <td><%= product.unit_price%></td>
+        <td><%= link_to product.supplier.name, product.supplier%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p></p>
 
 <%= link_to "New product", new_product_path %>
